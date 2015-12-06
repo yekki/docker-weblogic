@@ -1,0 +1,18 @@
+#enter working directory
+cd /Users/gniu/Workbench/docker/OracleWebLogic/samples/1221-domain
+
+#build image
+docker build -t samplewls:12.2.1 .
+
+#run image
+docker run -d -P --name=wlsadmin samplewls:12.2.1
+
+#nodemanager test
+docker run -d --name=wlsnm0 samplewls:12.2.1 startNodeManager.sh
+
+#start nodemanager, create a machine & a managed server
+docker run -d --link wlsadmin:wlsadmin samplewls:12.2.1 createServer.sh
+
+#tools
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' wlsadmin
+docker exec -it wlsadmin bash
