@@ -2,6 +2,7 @@
 # 
 # Since: October, 2014
 # Author: bruno.borges@oracle.com
+# Modified by: gary.niu@oracle.com
 # Description: script to build a Docker image for WebLogic
 
 usage() {
