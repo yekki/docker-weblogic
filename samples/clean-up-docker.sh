@@ -29,10 +29,15 @@ if [ "$1" = "-n" ]; then
   exit
 fi
 
+
+XARGS=xargs
+
+if [[ $OSTYPE == "darwin"* ]]; then XARGS=gxargs;fi
+
 # Remove containers with untagged images.
 echo "Removing containers:" >&2
-untagged_containers 1 | xargs --no-run-if-empty docker rm --volumes=true
+untagged_containers 1 | $XARGS --no-run-if-empty docker rm --volumes=true
 
 # Remove untagged images
 echo "Removing images:" >&2
-untagged_images 3 | xargs --no-run-if-empty docker rmi
+untagged_images 3 | $XARGS --no-run-if-empty docker rmi

@@ -61,7 +61,7 @@ while getopts "hdgv:" optname; do
 done
 
 # WebLogic Image Name
-DEFAULT_IMAGE_NAME="oracle/weblogic:$VERSION"
+DEFAULT_IMAGE_NAME="yekki/weblogic:$VERSION"
 DEFAULT_DEV_IMAGE_NAME="$DEFAULT_IMAGE_NAME-dev"
 
 # Developer or Generic?

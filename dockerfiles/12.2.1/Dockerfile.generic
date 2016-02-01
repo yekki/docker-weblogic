@@ -21,7 +21,7 @@
 # (1) fmw_12.2.1.0.0_wls.jar
 #     Download the Generic installer from http://www.oracle.com/technetwork/middleware/weblogic/downloads/wls-for-dev-1703574.html
 #
-# (2) jdk-8u60-linux-x64.rpm
+# (2) jdk-8u72-linux-x64.rpm
 #     Download from http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 #
 # HOW TO BUILD THIS IMAGE
@@ -32,14 +32,14 @@
 #
 # Pull base image
 # ---------------
-FROM oraclelinux:7.1
+FROM yekki/oel:7.2
 
 # Maintainer
 # ----------
 MAINTAINER Monica Riccelli <monica.riccelli@oracle.com>
 
 # Environmen#t variables required for this build (do NOT change)
-ENV JAVA_RPM jdk-8u65-linux-x64.rpm
+ENV JAVA_RPM jdk-8u72-linux-x64.rpm
 ENV WLS_PKG fmw_12.2.1.0.0_wls.jar
 ENV JAVA_HOME /usr/java/default
 ENV CONFIG_JVM_ARGS -Djava.security.egd=file:/dev/./urandom
@@ -56,7 +56,7 @@ COPY $JAVA_RPM /u01/
 COPY install.file /u01/
 COPY oraInst.loc /u01/
 
-# Install and configure Oracle JDK 8u60
+# Install and configure Oracle JDK 8u72
 # -------------------------------------
 RUN rpm -i /u01/$JAVA_RPM && \ 
     rm /u01/$JAVA_RPM
